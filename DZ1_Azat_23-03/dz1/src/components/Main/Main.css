@@ -1,0 +1,14 @@
+.main {
+    height: calc(100vh - 150px - 150px);
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+}

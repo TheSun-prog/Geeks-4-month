@@ -1,0 +1,15 @@
+ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    transition: 500ms;
+}
+
+a:hover {
+    color: #947fff;
+}
