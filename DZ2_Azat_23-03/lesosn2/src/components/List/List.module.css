@@ -1,0 +1,17 @@
+.list {
+    width: 800px;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    text-align: center;
+}
+
+.row {
+    min-width: 400px;
+    background-color: #bebebe;
+    padding: 20px 40px;
+    border-radius: 15px;
+}
+
