@@ -22,11 +22,23 @@ const TodoCard = ({task, handleDone, deleteCard, tasks, setTasks}) => {
         setTasks([...newList])
     }
 
+    const cancelEdit = (id) => {
+        const newList = tasks.map(task => {
+            if (task.id === id) {
+                return {...task, isEditing: false}
+            } else {
+                return task
+            }
+        })
+        setTasks([...newList])
+    }
+
     if (task.isEditing) {
         return (
             <div className={classes.todoCard}>
                 <Input value={editTitle} onChange={ updateTitle }/>
                 <button className={classes.btn} onClick={() => editCard(task.id)}>Save</button>
+                <button className={classes.btn} onClick={() => cancelEdit(task.id)}>Cancel</button>
             </div>
         )
     } else {
