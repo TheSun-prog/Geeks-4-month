@@ -1,16 +1,22 @@
 import Modal from './components/Modal/Modal';
-import {useState, useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import classes from './App.module.css'
 import Container from './components/Container/Container';
 import Button from './components/Button/Button';
 import TodoCard from './components/TodoCard/TodoCard';
 import Input from "./components/Input/Input";
+import Pagination from "./components/Pagination/Pagination";
 
 function App() {
+
+    const BASE_URL = 'https://jsonplaceholder.typicode.com/'
+    const limit = 10
+
 
     const [isShow, setIsShow] = useState(false);
     const [newTask, setNewTask] = useState('');
     const [search, setSearch] = useState('');
+    const [ offset, setOffset ] = useState(1)
     const [ tasks, setTasks] = useState(() => {
         const storedTasks = localStorage.getItem('tasks');
         return storedTasks ? JSON.parse(storedTasks) : [];
@@ -18,14 +24,30 @@ function App() {
     const [fullList, setFullList] = useState({tasks: [...tasks], willChange: true})
     const handleShow = () => setIsShow(!isShow)
 
+    const page = Math.floor(offset / limit) + 1 || 1
+
     useEffect(() => {
         localStorage.setItem('tasks', JSON.stringify(tasks));
     }, [tasks]);
 
+    const fetchData = async(ENDPOINT) => {
+        try {
+            const json = await fetch(BASE_URL + ENDPOINT)
+            const todos = await json.json()
+            setTasks([...todos])
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    useEffect(() => {
+        fetchData(`todos?_limit=${limit}&_start=${offset}`)
+    }, [offset])
 
     const handleAddTask = () => {
 
         if (newTask.length < 1) return
+
         setTasks((prevState) => [...prevState,
             {
                 id: Date.now(),
@@ -36,6 +58,16 @@ function App() {
 
         setNewTask('')
         handleShow();
+    }
+
+    const handleNext = () => {
+        if (offset === 191) return
+        setOffset(prev => prev + limit)
+    }
+
+    const handlePrev = () => {
+        if (offset === 1) return
+        setOffset(prev => prev - limit)
     }
 
     const handleDone = (id) => {
@@ -109,6 +141,7 @@ function App() {
                                 handleDone={handleDone}
                                 key={task.id}
                                 task={task}/>)}
+                    <Pagination handleNext={handleNext} handlePrev={handlePrev} page={page}/>
                 </div>
             </Container>
         </>
