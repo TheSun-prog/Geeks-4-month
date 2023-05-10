@@ -32,10 +32,12 @@
   flex-wrap: wrap;
 }
 
-.pokemonCard img {
-  width: 180px;
-  height: 180px;
-  padding: 10px;
+.pokemonCard .img {
+  width: 200px;
+  height: 200px;
+  background: center no-repeat;
+  background-size: 120px;
   border: black 1px solid;
   border-radius: 50%;
 }
+

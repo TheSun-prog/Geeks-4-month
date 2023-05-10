@@ -6,7 +6,7 @@ const PokemonCard = ({pokemon, getPokemon}) => {
 
 
     useEffect(() => {
-        getPokemon(pokemon.url)
+        getPokemon(pokemon.name)
             .then(data => {
                 setPokemonImg(data.sprites.other.dream_world.front_default)
             })
@@ -15,7 +15,7 @@ const PokemonCard = ({pokemon, getPokemon}) => {
     return (
         <div className='pokemonCard'>
             {pokemon.name}
-            <img src={pokemonImg} alt={pokemon.name}/>
+            <div className="img" style={{backgroundImage: `url(${pokemonImg})`}}></div>
         </div>
     )
 }

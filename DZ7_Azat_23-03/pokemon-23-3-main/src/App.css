@@ -1,0 +1,64 @@
+@import './theme/dark.css';
+@import './theme/light.css';
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.pokemonCard {
+  width: 250px;
+  height: 500px;
+  border: 1px solid red;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background-color: var(--card-background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.pokemonCard > img {
+  width: 50%;
+  height: 350px;
+}
+
+.pokemonList {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.main__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding-top: 50px;
+}
+
+.header__inner {
+  height: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__inner ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+.pokemon__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
