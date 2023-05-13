@@ -26,6 +26,18 @@
   cursor: pointer;
 }
 
+a, li, Link {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+button {
+  background-color: var(--button-color);
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+}
+
 .pokemonCard > img {
   width: 50%;
   height: 350px;
